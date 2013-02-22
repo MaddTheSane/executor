@@ -26,4 +26,7 @@ int osx_fileInit(void)
 	if (!CoreServicesdlReference)
 		return 0;
 	pFSPathMakeRef = dlsym(CoreServicesdlReference, "FSPathMakeRef");
+	
+	
+	return 1;
 }
