@@ -5,7 +5,7 @@
 #include <string.h>
 
 struct OSXFSRef {
-  unsigned char        hidden[80];
+  unsigned char hidden[80];
 };
 typedef struct OSXFSRef OSXFSRef;
 
@@ -15,7 +15,7 @@ static void *CoreServicesdlReference = NULL;
 
 static int (*pFSPathMakeRef)(const unsigned char *path, OSXFSRef *ref, char *isDirectory) = NULL;
 
-void osx_fileFixPercent(char* filename)
+static int osx_fileFixPercent(char* filename)
 {
 
 }
