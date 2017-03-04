@@ -11,3 +11,16 @@ depcomp
 install-sh
 missing
 ylwrap
+/Makefile
+build-arch-config.h
+build-os-config.h
+front-end-config.h
+host-arch-config.h
+host-os-config.h
+sound-config.h
+executor
+map_to_c
+mkseedtables
+mksspairtable
+mkultable
+stamp-h1
