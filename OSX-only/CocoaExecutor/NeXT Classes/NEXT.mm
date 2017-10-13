@@ -361,48 +361,6 @@ static int sane_debugging_on = 0; /* Leave this off and let the person doing the
 			      very nice thing to do. */
 #endif /* SANE_DEBUGGING */
 
-A0 (PUBLIC, void, sendsuspendevent)
-{
-  Point p;
-
-  if (printstate == __idle
-      && (size_info.size_flags & SZacceptSuspendResumeEvents)
-#if defined (SANE_DEBUGGING)
-      && !sane_debugging_on
-#endif /* SANE_DEBUGGING */
-      )
-      {
-	p.h = CW(MouseLocation.h);
-	p.v = CW(MouseLocation.v);
-	ROMlib_PPostEvent(osEvt, SUSPENDRESUMEBITS|SUSPEND|CONVERTCLIPBOARD,
-			  (HIDDEN_EvQElPtr *) 0, TickCount(), p, ROMlib_mods);
-      }
-}
-
-A1 (PUBLIC, void, sendresumeevent, LONGINT, cvtclip)
-{
-  LONGINT what;
-  Point p;
-
-  if (printstate == __idle
-#if defined (BINCOMPAT)
-      && (size_info.size_flags & SZacceptSuspendResumeEvents)
-#endif /* BINCOMPAT */
-#if defined (SANE_DEBUGGING)
-      && !sane_debugging_on
-#endif /* SANE_DEBUGGING */
-      )
-    {
-      what = SUSPENDRESUMEBITS | RESUME;
-      if (cvtclip)
-	what |= CONVERTCLIPBOARD;
-      p.h = CW(MouseLocation.h);
-      p.v = CW(MouseLocation.v);
-      ROMlib_PPostEvent(osEvt, what, (HIDDEN_EvQElPtr *) 0, TickCount(),
-			p, ROMlib_mods);
-    }
-}
-
 A0(PUBLIC, void, sendcopy)
 {
     Point p;

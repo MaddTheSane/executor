@@ -98,6 +98,10 @@ char ROMlib_rcsid_main[] =
 
 #include "paramline.h"
 
+#if defined (Sound_SDL_Sound)
+#include "sdl-sound.h"
+#endif
+
 #if defined (MSDOS)
 #include "aspi.h"
 #include "dosdisk.h"
@@ -1454,7 +1458,7 @@ int main(int argc, char** argv)
 #if defined (Sound_SDL_Sound)
 
   if (opt_val (common_db, "sdlaudio", &arg))
-    ROMlib_set_sdl_audio_driver_name (arg);
+    ROMlib_set_sdl_audio_driver_name (arg.c_str());
 
 #endif
 
