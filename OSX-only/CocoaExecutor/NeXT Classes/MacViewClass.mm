@@ -1729,7 +1729,6 @@ void set_malloc_debug (int level)
 }
 #endif
 
-
 @implementation MacViewClass
 
 - (id) initWithFrame:(NSRect)frameRect
@@ -2064,7 +2063,7 @@ static struct
 }
 
 - (BOOL) writeSelectionToPasteboard:(NSPasteboard *) pboard
-						types:(NSArray *) types
+						types:(NSArray<NSString*> *) types
 {
   id saveROMlib_pasteboard;
 

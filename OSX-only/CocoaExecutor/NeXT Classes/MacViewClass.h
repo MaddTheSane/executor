@@ -302,7 +302,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface MacViewClass : NSView
+@interface MacViewClass : NSView <NSServicesMenuRequestor>
 
 - (id)step;
 - (BOOL) acceptsFirstResponder;
