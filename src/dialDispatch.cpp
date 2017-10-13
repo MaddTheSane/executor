@@ -14,13 +14,12 @@ char ROMlib_rcsid_dialDispatch[] =
 #include "DialogMgr.h"
 
 using namespace Executor;
-using namespace ByteSwap;
 
 /* traps from the DialogDispatch trap */
 
 P1 (PUBLIC pascal trap, OSErr, GetStdFilterProc, ProcPtr *, proc)
 {
-  *proc = (ProcPtr)RM (&P_ROMlib_myfilt);
+  *proc = (ProcPtr) RM (P_ROMlib_myfilt);
   warning_unimplemented ("no specs"); /* i.e. no documentation on how this
 					 routine is *supposed* to work, so
 					 we may be blowing off something
@@ -35,7 +34,7 @@ P2 (PUBLIC pascal trap, OSErr, SetDialogDefaultItem,    DialogPtr, dialog,
 
   dp = (DialogPeek) dialog;
 
-  dp->aDefItem = BigEndianValue (new_item);
+  dp->aDefItem = CW (new_item);
   warning_unimplemented ("no specs");
   return noErr;
 }

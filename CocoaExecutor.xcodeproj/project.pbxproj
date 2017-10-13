@@ -220,7 +220,7 @@
 		557F30D119897991009873EB /* thumb_vert.map in Sources */ = {isa = PBXBuildFile; fileRef = 557F30CF19897991009873EB /* thumb_vert.map */; };
 		557F30D3198982DC009873EB /* CFriendly.h in Headers */ = {isa = PBXBuildFile; fileRef = 557F30D2198982DC009873EB /* CFriendly.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		557F30D519898513009873EB /* CBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 557F30D419898513009873EB /* CBridge.cpp */; };
-		557F30D71989ACFE009873EB /* fauxdbm.c in Sources */ = {isa = PBXBuildFile; fileRef = 558B988A1987FCBD00ADF159 /* fauxdbm.c */; };
+		557F30D71989ACFE009873EB /* fauxdbm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B988A1987FCBD00ADF159 /* fauxdbm.cpp */; };
 		558B98521987F5BA00ADF159 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558B98511987F5BA00ADF159 /* IOKit.framework */; };
 		558B99531987FCBF00ADF159 /* aboutbox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98541987FCBD00ADF159 /* aboutbox.cpp */; };
 		558B99541987FCBF00ADF159 /* adb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98551987FCBD00ADF159 /* adb.cpp */; };
@@ -307,7 +307,7 @@
 		558B99AE1987FCBF00ADF159 /* interfacelib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98B01987FCBD00ADF159 /* interfacelib.cpp */; };
 		558B99AF1987FCBF00ADF159 /* iu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98B11987FCBD00ADF159 /* iu.cpp */; };
 		558B99B01987FCBF00ADF159 /* iv-stubs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98B21987FCBD00ADF159 /* iv-stubs.cpp */; };
-		558B99B11987FCBF00ADF159 /* keycode.mm in Sources */ = {isa = PBXBuildFile; fileRef = 558B98B31987FCBD00ADF159 /* keycode.mm */; };
+		558B99B11987FCBF00ADF159 /* keycode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98B31987FCBD00ADF159 /* keycode.cpp */; settings = {COMPILER_FLAGS = "-x objective-c++"; }; };
 		558B99B21987FCBF00ADF159 /* launch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98B41987FCBD00ADF159 /* launch.cpp */; };
 		558B99B41987FCBF00ADF159 /* listAccess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98B61987FCBD00ADF159 /* listAccess.cpp */; };
 		558B99B51987FCBF00ADF159 /* listAddDel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98B71987FCBD00ADF159 /* listAddDel.cpp */; };
@@ -326,7 +326,7 @@
 		558B99C81987FCBF00ADF159 /* mman.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98CA1987FCBD00ADF159 /* mman.cpp */; };
 		558B99C91987FCBF00ADF159 /* mmansubr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98CB1987FCBD00ADF159 /* mmansubr.cpp */; };
 		558B99CB1987FCBF00ADF159 /* notify.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98CD1987FCBD00ADF159 /* notify.cpp */; };
-		558B99CC1987FCBF00ADF159 /* option.mm in Sources */ = {isa = PBXBuildFile; fileRef = 558B98CE1987FCBD00ADF159 /* option.mm */; };
+		558B99CC1987FCBF00ADF159 /* option.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98CE1987FCBD00ADF159 /* option.cpp */; settings = {COMPILER_FLAGS = "-x objective-c++"; }; };
 		558B99CD1987FCBF00ADF159 /* osevent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98CF1987FCBD00ADF159 /* osevent.cpp */; };
 		558B99CE1987FCBF00ADF159 /* osutil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98D01987FCBD00ADF159 /* osutil.cpp */; };
 		558B99CF1987FCBF00ADF159 /* pack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98D11987FCBD00ADF159 /* pack.cpp */; };
@@ -342,7 +342,7 @@
 		558B99D91987FCBF00ADF159 /* process.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98DB1987FCBD00ADF159 /* process.cpp */; };
 		558B99DA1987FCBF00ADF159 /* prPrinting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98DC1987FCBD00ADF159 /* prPrinting.cpp */; };
 		558B99DB1987FCBF00ADF159 /* prRecords.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98DD1987FCBD00ADF159 /* prRecords.cpp */; };
-		558B99DC1987FCBF00ADF159 /* PSprint.mm in Sources */ = {isa = PBXBuildFile; fileRef = 558B98DE1987FCBD00ADF159 /* PSprint.mm */; };
+		558B99DC1987FCBF00ADF159 /* PSprint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98DE1987FCBD00ADF159 /* PSprint.cpp */; settings = {COMPILER_FLAGS = "-x objective-c++"; }; };
 		558B99DD1987FCBF00ADF159 /* PSstrings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98DF1987FCBD00ADF159 /* PSstrings.cpp */; };
 		558B99DE1987FCBF00ADF159 /* qBit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98E01987FCBD00ADF159 /* qBit.cpp */; };
 		558B99DF1987FCBF00ADF159 /* qCConv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 558B98E11987FCBD00ADF159 /* qCConv.cpp */; };
@@ -973,7 +973,7 @@
 		558B98751987FCBD00ADF159 /* default_ctab_values.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = default_ctab_values.cpp; sourceTree = "<group>"; };
 		558B98761987FCBD00ADF159 /* desk.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = desk.cpp; sourceTree = "<group>"; };
 		558B98771987FCBD00ADF159 /* desperate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = desperate.cpp; sourceTree = "<group>"; };
-		558B98781987FCBD00ADF159 /* device.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = device.cpp; sourceTree = "<group>"; usesTabs = 0; };
+		558B98781987FCBD00ADF159 /* device.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = device.cpp; sourceTree = "<group>"; };
 		558B98791987FCBD00ADF159 /* dialAlert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dialAlert.cpp; sourceTree = "<group>"; };
 		558B987A1987FCBD00ADF159 /* dialCreate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dialCreate.cpp; sourceTree = "<group>"; };
 		558B987B1987FCBD00ADF159 /* dialDispatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dialDispatch.cpp; sourceTree = "<group>"; };
@@ -991,7 +991,7 @@
 		558B98871987FCBD00ADF159 /* emutraptables.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = emutraptables.cpp; sourceTree = "<group>"; };
 		558B98881987FCBD00ADF159 /* error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = error.cpp; sourceTree = "<group>"; };
 		558B98891987FCBD00ADF159 /* executor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = executor.cpp; sourceTree = "<group>"; };
-		558B988A1987FCBD00ADF159 /* fauxdbm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fauxdbm.c; sourceTree = "<group>"; };
+		558B988A1987FCBD00ADF159 /* fauxdbm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fauxdbm.cpp; sourceTree = "<group>"; };
 		558B988B1987FCBD00ADF159 /* fileAccess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = fileAccess.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		558B988C1987FCBD00ADF159 /* fileCreate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fileCreate.cpp; sourceTree = "<group>"; };
 		558B988D1987FCBD00ADF159 /* fileDirs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fileDirs.cpp; sourceTree = "<group>"; };
@@ -1032,7 +1032,7 @@
 		558B98B01987FCBD00ADF159 /* interfacelib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = interfacelib.cpp; sourceTree = "<group>"; };
 		558B98B11987FCBD00ADF159 /* iu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = iu.cpp; sourceTree = "<group>"; };
 		558B98B21987FCBD00ADF159 /* iv-stubs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "iv-stubs.cpp"; sourceTree = "<group>"; };
-		558B98B31987FCBD00ADF159 /* keycode.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = keycode.mm; sourceTree = "<group>"; };
+		558B98B31987FCBD00ADF159 /* keycode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = keycode.cpp; sourceTree = "<group>"; };
 		558B98B41987FCBD00ADF159 /* launch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = launch.cpp; sourceTree = "<group>"; };
 		558B98B61987FCBD00ADF159 /* listAccess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = listAccess.cpp; sourceTree = "<group>"; };
 		558B98B71987FCBD00ADF159 /* listAddDel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = listAddDel.cpp; sourceTree = "<group>"; };
@@ -1053,7 +1053,7 @@
 		558B98CB1987FCBD00ADF159 /* mmansubr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mmansubr.cpp; sourceTree = "<group>"; };
 		558B98CC1987FCBD00ADF159 /* munger_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = munger_test.c; sourceTree = "<group>"; };
 		558B98CD1987FCBD00ADF159 /* notify.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = notify.cpp; sourceTree = "<group>"; };
-		558B98CE1987FCBD00ADF159 /* option.mm */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.objcpp; path = option.mm; sourceTree = "<group>"; usesTabs = 0; };
+		558B98CE1987FCBD00ADF159 /* option.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = option.cpp; sourceTree = "<group>"; usesTabs = 0; };
 		558B98CF1987FCBD00ADF159 /* osevent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = osevent.cpp; sourceTree = "<group>"; };
 		558B98D01987FCBD00ADF159 /* osutil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = osutil.cpp; sourceTree = "<group>"; };
 		558B98D11987FCBD00ADF159 /* pack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pack.cpp; sourceTree = "<group>"; };
@@ -1069,7 +1069,7 @@
 		558B98DB1987FCBD00ADF159 /* process.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = process.cpp; sourceTree = "<group>"; };
 		558B98DC1987FCBD00ADF159 /* prPrinting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = prPrinting.cpp; sourceTree = "<group>"; };
 		558B98DD1987FCBD00ADF159 /* prRecords.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = prRecords.cpp; sourceTree = "<group>"; };
-		558B98DE1987FCBD00ADF159 /* PSprint.mm */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PSprint.mm; sourceTree = "<group>"; usesTabs = 0; };
+		558B98DE1987FCBD00ADF159 /* PSprint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PSprint.cpp; sourceTree = "<group>"; usesTabs = 0; };
 		558B98DF1987FCBD00ADF159 /* PSstrings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PSstrings.cpp; sourceTree = "<group>"; };
 		558B98E01987FCBD00ADF159 /* qBit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = qBit.cpp; sourceTree = "<group>"; };
 		558B98E11987FCBD00ADF159 /* qCConv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = qCConv.cpp; sourceTree = "<group>"; };
@@ -2045,7 +2045,7 @@
 				558B98871987FCBD00ADF159 /* emutraptables.cpp */,
 				558B98881987FCBD00ADF159 /* error.cpp */,
 				558B98891987FCBD00ADF159 /* executor.cpp */,
-				558B988A1987FCBD00ADF159 /* fauxdbm.c */,
+				558B988A1987FCBD00ADF159 /* fauxdbm.cpp */,
 				551EE33D198D5E70004A3A41 /* File access */,
 				558B98931987FCBD00ADF159 /* finder.cpp */,
 				558B98941987FCBD00ADF159 /* float4.cpp */,
@@ -2070,7 +2070,7 @@
 				558B98B01987FCBD00ADF159 /* interfacelib.cpp */,
 				558B98B11987FCBD00ADF159 /* iu.cpp */,
 				558B98B21987FCBD00ADF159 /* iv-stubs.cpp */,
-				558B98B31987FCBD00ADF159 /* keycode.mm */,
+				558B98B31987FCBD00ADF159 /* keycode.cpp */,
 				558B98B41987FCBD00ADF159 /* launch.cpp */,
 				551EE33F198D5EC1004A3A41 /* Lists */,
 				558B98BD1987FCBD00ADF159 /* local_charset.cpp */,
@@ -2083,7 +2083,7 @@
 				558B98CB1987FCBD00ADF159 /* mmansubr.cpp */,
 				558B98CC1987FCBD00ADF159 /* munger_test.c */,
 				558B98CD1987FCBD00ADF159 /* notify.cpp */,
-				558B98CE1987FCBD00ADF159 /* option.mm */,
+				558B98CE1987FCBD00ADF159 /* option.cpp */,
 				558B98CF1987FCBD00ADF159 /* osevent.cpp */,
 				558B98D01987FCBD00ADF159 /* osutil.cpp */,
 				558B98D11987FCBD00ADF159 /* pack.cpp */,
@@ -2099,7 +2099,7 @@
 				558B98DB1987FCBD00ADF159 /* process.cpp */,
 				558B98DC1987FCBD00ADF159 /* prPrinting.cpp */,
 				558B98DD1987FCBD00ADF159 /* prRecords.cpp */,
-				558B98DE1987FCBD00ADF159 /* PSprint.mm */,
+				558B98DE1987FCBD00ADF159 /* PSprint.cpp */,
 				558B98DF1987FCBD00ADF159 /* PSstrings.cpp */,
 				551EE345198D5FA1004A3A41 /* QuickDraw */,
 				558B990D1987FCBE00ADF159 /* redrawscreen.cpp */,
@@ -2759,7 +2759,7 @@
 				558B9A0D1987FCBF00ADF159 /* resGet.cpp in Sources */,
 				558B99C91987FCBF00ADF159 /* mmansubr.cpp in Sources */,
 				558B9A151987FCBF00ADF159 /* resPartial.cpp in Sources */,
-				557F30D71989ACFE009873EB /* fauxdbm.c in Sources */,
+				557F30D71989ACFE009873EB /* fauxdbm.cpp in Sources */,
 				558B99A51987FCBF00ADF159 /* hfsVolume.cpp in Sources */,
 				558B9A0A1987FCBF00ADF159 /* rawsrcblt.cpp in Sources */,
 				558B9A1F1987FCBF00ADF159 /* shutdown.cpp in Sources */,
@@ -2846,14 +2846,14 @@
 				558B9A191987FCBF00ADF159 /* scrap.cpp in Sources */,
 				558B9A491987FCBF00ADF159 /* windDocdef.cpp in Sources */,
 				558B9A171987FCBF00ADF159 /* rgbutil.cpp in Sources */,
-				558B99CC1987FCBF00ADF159 /* option.mm in Sources */,
+				558B99CC1987FCBF00ADF159 /* option.cpp in Sources */,
 				558B9A2F1987FCBF00ADF159 /* syserr.cpp in Sources */,
 				558B99F01987FCBF00ADF159 /* qPaletteMgr.cpp in Sources */,
 				558B9A4D1987FCBF00ADF159 /* windSize.cpp in Sources */,
 				558B9A1D1987FCBF00ADF159 /* serial.cpp in Sources */,
 				558B99A41987FCBF00ADF159 /* hfsMisc.cpp in Sources */,
 				558B99571987FCBF00ADF159 /* AE_desc.cpp in Sources */,
-				558B99B11987FCBF00ADF159 /* keycode.mm in Sources */,
+				558B99B11987FCBF00ADF159 /* keycode.cpp in Sources */,
 				558B9A3C1987FCBF00ADF159 /* time.cpp in Sources */,
 				558B996F1987FCBF00ADF159 /* ctlStddef.cpp in Sources */,
 				558B9A0E1987FCBF00ADF159 /* resGetinfo.cpp in Sources */,
@@ -2977,7 +2977,7 @@
 				556E0562198584DE00FC4362 /* zoom.map in Sources */,
 				558B99AC1987FCBF00ADF159 /* image_inits.cpp in Sources */,
 				558B9A311987FCBF00ADF159 /* teAccess.cpp in Sources */,
-				558B99DC1987FCBF00ADF159 /* PSprint.mm in Sources */,
+				558B99DC1987FCBF00ADF159 /* PSprint.cpp in Sources */,
 				556E055A198584DE00FC4362 /* arrow_left_inactive.map in Sources */,
 				558B9A121987FCBF00ADF159 /* resMisc.cpp in Sources */,
 				558B999C1987FCBF00ADF159 /* gestalt.cpp in Sources */,

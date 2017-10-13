@@ -47,7 +47,7 @@ using namespace Executor;
 
 @implementation MacAppClass
 
-char ROMlib_started;
+extern char ROMlib_started;
 
 MacWindow *global_gameWindow;
 NSMenu *Executor::global_menu;

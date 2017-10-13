@@ -23,7 +23,6 @@ char ROMlib_rcsid_soundIMVI[] =
 #include "rsys/soundopts.h"
 
 using namespace Executor;
-using namespace ByteSwap;
 
 P1(PUBLIC, pascal trap void, SndGetSysBeepState, INTEGER *, statep)
 {
@@ -171,8 +170,8 @@ start_playing (SndChannelPtr chanp, SndDoubleBufferHeaderPtr paramp,
 	      task_inserted = TRUE;
 	    }
 	  duration_in_mills = (((long long) 1000 * (1 << 16)
-				* BigEndianValue (dbp->dbNumFrames))
-			       / BigEndianValue (paramp->dbhSampleRate));
+				* CL (dbp->dbNumFrames))
+			       / CL (paramp->dbhSampleRate));
 	  PrimeTime ((QElemPtr) &call_back_info.task, duration_in_mills);
 	}
       else
@@ -199,7 +198,7 @@ A0 (PUBLIC, void, C_sound_timer_handler)
       start_playing (call_back_info.chanp, call_back_info.headp,
 		     current_buffer ^ 1);
       dbp->dbFlags &= CLC (~dbBufferReady);
-      CToPascalCall (&pp, CTOP_SetCTitle, call_back_info.chanp, dbp);
+      CToPascalCall((void*)pp, CTOP_SetCTitle, call_back_info.chanp, dbp);
     }
 }
 
@@ -223,10 +222,10 @@ P2(PUBLIC, pascal trap OSErr, SndPlayDoubleBuffer, SndChannelPtr, chanp,
 	warning_sound_log ("paramp = NULL");
       else
 	warning_sound_log ("nc %d sz %d c %d p %d",
-			   BigEndianValue (paramp->dbhNumChannels),
-			   BigEndianValue (paramp->dbhSampleSize),
-			   BigEndianValue (paramp->dbhCompressionID),
-			   BigEndianValue (paramp->dbhPacketSize));
+			   CW (paramp->dbhNumChannels),
+			   CW (paramp->dbhSampleSize),
+			   CW (paramp->dbhCompressionID),
+			   CW (paramp->dbhPacketSize));
       SND_CHAN_DBHP (chanp) = paramp;
       SND_CHAN_CURRENT_DB (chanp) = 0;
       /*

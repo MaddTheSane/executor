@@ -89,7 +89,7 @@ A3(PRIVATE inline, void, CALLACTION, ControlHandle, ch, INTEGER, inpart,
     else if (a == (ProcPtr) P_ROMlib_stdftrack)
 	C_ROMlib_stdftrack(ch, inpart);
     else
-	CToPascalCall(&a, CTOP_ROMlib_mytrack, ch, inpart);
+	CToPascalCall((void*)a, CTOP_ROMlib_mytrack, ch, inpart);
     HOOKRESTOREREGS();
 }
 
@@ -116,8 +116,8 @@ P3 (PUBLIC pascal trap, INTEGER, TrackControl,	/* IMI-323 */
        if (!partstart)
 	 {
 	   GetMouse (&p);
-	   BigEndianInPlace(p.h);
-	   BigEndianInPlace(p.v);
+	   p.h = BigEndianValue(p.h);
+	   p.v = BigEndianValue(p.v);
 	   partstart = inpart = TestControl (c, p);
 	 }
        
@@ -147,8 +147,8 @@ P3 (PUBLIC pascal trap, INTEGER, TrackControl,	/* IMI-323 */
 	   while (!GetOSEvent(mUpMask, &ev))
 	     {
 	       GlobalToLocal(&ev.where);
-	       whereunswapped.h = BigEndianValue(ev.where.h);
-	       whereunswapped.v = BigEndianValue(ev.where.v);
+	       whereunswapped.h = CW(ev.where.h);
+	       whereunswapped.v = CW(ev.where.v);
 	       inpart = TestControl(c, whereunswapped);
 	       CTLCALL(c, autoTrack, inpart);
 	     }
@@ -166,8 +166,8 @@ P3 (PUBLIC pascal trap, INTEGER, TrackControl,	/* IMI-323 */
 	      Quicken. */
 	   if (!CTLCALL (c, dragCntl, partstart))
 	     {
-	       thumb._tlimit.left = BigEndianValue(p.h);
-	       thumb._tlimit.top  = BigEndianValue(p.v);
+	       thumb._tlimit.left = CW(p.h);
+	       thumb._tlimit.top  = CW(p.v);
 	       CTLCALL(c, thumbCntl, (LONGINT) (long) &thumb);
 	       rh = NewRgn();
 		 
@@ -175,7 +175,7 @@ P3 (PUBLIC pascal trap, INTEGER, TrackControl,	/* IMI-323 */
 		 
 	       PATASSIGN(DragPattern, ltGray);
 	       l = DragTheRgn(rh, p, &thumb._tlimit, &thumb._tslop,
-			      BigEndianValue(thumb._taxis), a);
+			      CW(thumb._taxis), a);
 	       if ((uint32) l != 0x80008000)
 		 {
 		   CTLCALL(c, posCntl, l);
@@ -194,8 +194,8 @@ P3 (PUBLIC pascal trap, INTEGER, TrackControl,	/* IMI-323 */
 	   while (!OSEventAvail(mUpMask, &ev) && StillDown())
 	     {
 	       GlobalToLocal(&ev.where);
-	       whereunswapped.h = BigEndianValue(ev.where.h);
-	       whereunswapped.v = BigEndianValue(ev.where.v);
+	       whereunswapped.h = CW(ev.where.h);
+	       whereunswapped.v = CW(ev.where.v);
 	       inpart = TestControl(c, whereunswapped);
 	       if (inpart && inpart != partstart)
 		 inpart = 0;
@@ -209,8 +209,8 @@ P3 (PUBLIC pascal trap, INTEGER, TrackControl,	/* IMI-323 */
 	     }
 	   GetOSEvent(mUpMask, &ev);
 	   GlobalToLocal(&ev.where);
-	   whereunswapped.h = BigEndianValue(ev.where.h);
-	   whereunswapped.v = BigEndianValue(ev.where.v);
+	   whereunswapped.h = CW(ev.where.h);
+	   whereunswapped.v = CW(ev.where.v);
 	   if (HxX(c, contrlHilite))
 	     {
 	       HxX(c, contrlHilite) = 0;

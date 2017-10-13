@@ -98,6 +98,10 @@ char ROMlib_rcsid_main[] =
 
 #include "paramline.h"
 
+#if defined (Sound_SDL_Sound)
+#include "sdl-sound.h"
+#endif
+
 #if defined (MSDOS)
 #include "aspi.h"
 #include "dosdisk.h"
@@ -114,6 +118,10 @@ namespace Executor {
   void NeXTMain();
 }
 #endif
+namespace Executor {
+	PRIVATE void setstartdir(char *);
+}
+
 
 #include <ctype.h>
 
@@ -543,7 +551,6 @@ extern void willsetperms( void );
 extern void badfilesystem( void );
 namespace Executor {
 	PRIVATE void misc_self_examination(char*);
-	PRIVATE void setstartdir(char *);
 }
 
 A1(PRIVATE, void, misc_self_examination, char *, us)
@@ -581,7 +588,7 @@ A1(PRIVATE, void, misc_self_examination, char *, us)
 	    exit(6);
 	}
 
-	if (fseek(ROMlib_fp, BigEndianValue(arch.offset), SEEK_SET) == -1) {
+	if (fseek(ROMlib_fp, CL(arch.offset), SEEK_SET) == -1) {
 	    fprintf(stderr, "couldn't seek after load seg command\n");
 	    exit(17);
 	}
@@ -899,7 +906,7 @@ setup_trap_vectors (void)
 
   /* Set up the trap vector for the timer interrupt. */
   timer_callback = callback_install (catchalarm, NULL);
-  *(syn68k_addr_t *)SYN68K_TO_US(M68K_TIMER_VECTOR * 4) = BigEndianValue (timer_callback);
+  *(syn68k_addr_t *)SYN68K_TO_US(M68K_TIMER_VECTOR * 4) = CL (timer_callback);
 
   /* Fill in unhandled trap vectors so they cause graceful deaths.
    * Skip over those trap vectors which are known to have legitimate
@@ -931,7 +938,7 @@ setup_trap_vectors (void)
       {
 	syn68k_addr_t c;
 	c = callback_install (unhandled_trap, (void *) i);
-	*(syn68k_addr_t *)SYN68K_TO_US(i * 4) = BigEndianValue (c);
+	*(syn68k_addr_t *)SYN68K_TO_US(i * 4) = CL (c);
       }
 }
 #endif /* SYN68K */
@@ -1195,10 +1202,10 @@ zap_comments (char *buf, int n_left)
   char *s;					\
   char *retval;					\
 						\
-  s = alloca (2 + strlen(filename) + 1);	\
+  s = (char*)alloca (2 + strlen(filename) + 1);	\
   sprintf (s, "+/%s", filename);		\
   s = copystr (s);				\
-  retval = alloca (strlen (s) + 1);		\
+  retval = (char*)alloca (strlen (s) + 1);		\
   strcpy (retval, s);				\
   free (s);					\
   retval;					\
@@ -1448,10 +1455,10 @@ int main(int argc, char** argv)
     ROMlib_set_use_scancodes (TRUE);
 #endif
 
-#if defined (SDL)
+#if defined (Sound_SDL_Sound)
 
   if (opt_val (common_db, "sdlaudio", &arg))
-    ROMlib_set_sdl_audio_driver_name (arg);
+    ROMlib_set_sdl_audio_driver_name (arg.c_str());
 
 #endif
 
@@ -1894,7 +1901,7 @@ int main(int argc, char** argv)
   MenuList   = 0;
   MBSaveLoc  = 0;
 
-  SysVersion = BigEndianValue (system_version);
+  SysVersion = CW (system_version);
   FSFCBLen = CWC (94);
   ScrapState = CWC (-1);
 
@@ -1934,7 +1941,7 @@ int main(int argc, char** argv)
   UTableBase =
   (DCtlHandlePtr) (long) RM (NewPtr (sizeof (UTableBase[0].p) * NDEVICES));
   memset (MR (UTableBase), 0, sizeof (UTableBase[0].p) * NDEVICES);
-  UnitNtryCnt = BigEndianValue (NDEVICES);
+  UnitNtryCnt = CW (NDEVICES);
   TheZone = ApplZone;
 
   if (graphics_p) {
@@ -1946,13 +1953,13 @@ int main(int argc, char** argv)
     make_rgb_spec (&mac_16bpp_rgb_spec,
 		     16, TRUE, 0,
 		     5, 10, 5, 5, 5, 0,
-		     BigEndianValue (GetCTSeed ()));
-
+		     CL (GetCTSeed ()));
+      
     make_rgb_spec (&mac_32bpp_rgb_spec,
-		     32, TRUE, 0,
-		     8, 16, 8, 8, 8, 0,
-		     BigEndianValue (GetCTSeed ()));
-
+        32, TRUE, 0,
+        8, 16, 8, 8, 8, 0,
+        CL (GetCTSeed ()));
+      
     gd_allocate_main_device ();
   }
 
@@ -2082,7 +2089,9 @@ int main(int argc, char** argv)
   complain_if_no_ghostscript ();
 #endif
 
+#ifdef MACOSX_
   NeXTMain();
+#endif
 
   executor_main ();
 
