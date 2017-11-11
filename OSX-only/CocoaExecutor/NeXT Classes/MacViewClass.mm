@@ -34,6 +34,11 @@ char ROMlib_rcsid_MacViewClass[] =
 #include "rsys/host.h"
 #include <assert.h>
 
+// TODO: Check byte-swapping!
+// TODO: The old NeXT project this is based off of was in big-endian mode.
+// TODO: The old Macs this is trying to emulate is also big-endian.
+// TODO: The CURRENT Macs are little-endian. There may be problems!!!
+
 using namespace Executor;
 /* NOTE: This isn't a very good MACOSX_ object, because much of its
  * data is stored in static variables, instead of in instance
@@ -818,524 +823,6 @@ typedef NS_ENUM(int, convertdir_t) {
    UNIXRTFToMac
 };
 
-static const unsigned char mactonext[] = {
-   0,
-   1,
-   2,
-   3,
-   4,
-   5,
-   6,
-   7,
-   8,
-   9,
-   10,
-   11,
-   12,
-   13,
-   14,
-   15,
-   16,
-   17,
-   18,
-   19,
-   20,
-   21,
-   22,
-   23,
-   24,
-   25,
-   26,
-   27,
-   28,
-   29,
-   30,
-   31,
-   32,
-   33,
-   34,
-   35,
-   36,
-   37,
-   38,
-   39,			/* NEXTCHAR_QUOTESINGLE, */
-   40,
-   41,
-   42,
-   43,
-   44,
-   45,
-   46,
-   47,
-   48,
-   49,
-   50,
-   51,
-   52,
-   53,
-   54,
-   55,
-   56,
-   57,
-   58,
-   59,
-   60,
-   61,
-   62,
-   63,
-   64,
-   65,
-   66,
-   67,
-   68,
-   69,
-   70,
-   71,
-   72,
-   73,
-   74,
-   75,
-   76,
-   77,
-   78,
-   79,
-   80,
-   81,
-   82,
-   83,
-   84,
-   85,
-   86,
-   87,
-   88,
-   89,
-   90,
-   91,
-   92,
-   93,
-   94,
-   95,
-   96,			/* NEXTCHAR_GRAVE, */
-   97,
-   98,
-   99,
-   100,
-   101,
-   102,
-   103,
-   104,
-   105,
-   106,
-   107,
-   108,
-   109,
-   110,
-   111,
-   112,
-   113,
-   114,
-   115,
-   116,
-   117,
-   118,
-   119,
-   120,
-   121,
-   122,
-   123,
-   124,
-   125,
-   126,
-   127,
-   NEXTCHAR_ADIERESIS,
-   NEXTCHAR_ARING,
-   NEXTCHAR_CCEDILLA,
-   NEXTCHAR_EACUTE,
-   NEXTCHAR_NTILDE,
-   NEXTCHAR_ODIERESIS,
-   NEXTCHAR_UDIERESIS,
-   NEXTCHAR_aACUTE,
-   NEXTCHAR_aGRAVE,
-   NEXTCHAR_aCIRCUMFLEX,
-   NEXTCHAR_aDIERESIS,
-   NEXTCHAR_aTILDE,
-   NEXTCHAR_aRING,
-   NEXTCHAR_cCEDILLA,
-   NEXTCHAR_eACUTE,
-   NEXTCHAR_eGRAVE,
-   NEXTCHAR_eCIRCUMFLEX,
-   NEXTCHAR_eDIERESIS,
-   NEXTCHAR_iACUTE,
-   NEXTCHAR_iGRAVE,
-   NEXTCHAR_iCIRCUMFLEX,
-   NEXTCHAR_iDIERESIS,
-   NEXTCHAR_nTILDE,
-   NEXTCHAR_oACUTE,
-   NEXTCHAR_oGRAVE,
-   NEXTCHAR_oCIRCUMFLEX,
-   NEXTCHAR_oDIERESIS,
-   NEXTCHAR_oTILDE,
-   NEXTCHAR_uACUTE,
-   NEXTCHAR_uGRAVE,
-   NEXTCHAR_uCIRCUMFLEX,
-   NEXTCHAR_uDIERESIS,
-   NEXTCHAR_DAGGER,
-   NEXTCHAR_DEGREE,
-   NEXTCHAR_CENT,
-   NEXTCHAR_STERLING,
-   NEXTCHAR_SECTION,
-   NEXTCHAR_BULLET,
-   NEXTCHAR_PARAGRAPH,
-   NEXTCHAR_GERMANDBLS,
-   NEXTCHAR_REGISTERED,
-   NEXTCHAR_COPYRIGHT,
-   NEXTCHAR_TRADEMARK,
-   NEXTCHAR_ACUTE,
-   NEXTCHAR_DIERESIS,
-   NEXTCHAR_NOTEQUAL,
-   NEXTCHAR_AE,
-   NEXTCHAR_OSLASH,
-   NEXTCHAR_INFINITY,
-   NEXTCHAR_PLUSMINUS,
-   NEXTCHAR_LESSEQUAL,
-   NEXTCHAR_GREATEQUAL,
-   NEXTCHAR_YEN,
-   NEXTCHAR_MU,
-   NEXTCHAR_PARTIALDIFF,
-   NEXTCHAR_SUMMATION,
-   NEXTCHAR_PRODUCT,
-   NEXTCHAR_PI,
-   NEXTCHAR_INTEGRAL,
-   NEXTCHAR_ORDFEMININE,
-   NEXTCHAR_ORDMASCULINE,
-   NEXTCHAR_OMEGA,
-   NEXTCHAR_ae,
-   NEXTCHAR_oSLASH,
-   NEXTCHAR_QUESTIONDOWN,
-   NEXTCHAR_EXCLAMDOWN,
-   NEXTCHAR_LOGICALNOT,
-   NEXTCHAR_RADICAL,
-   NEXTCHAR_FLORIN,
-   NEXTCHAR_APPROXEQUAL,
-   NEXTCHAR_DELTA,
-   NEXTCHAR_GUILLEMOTLEFT,
-   NEXTCHAR_GUILLEMOTRIGHT,
-   NEXTCHAR_ELLIPSIS,
-   NEXTCHAR_FIGSP,
-   NEXTCHAR_AGRAVE,
-   NEXTCHAR_ATILDE,
-   NEXTCHAR_OTILDE,
-   NEXTCHAR_OE,
-   NEXTCHAR_oe,
-   NEXTCHAR_ENDASH,
-   NEXTCHAR_EMDASH,
-   NEXTCHAR_QUOTEDBLLEFT,
-   NEXTCHAR_QUOTEDBLRIGHT,
-   NEXTCHAR_GRAVE,			/* NEXTCHAR_QUOTELEFT, */
-   NEXTCHAR_QUOTESINGLE,		/* NEXTCHAR_QUOTERIGHT, */
-   NEXTCHAR_DIVIDE,
-   NEXTCHAR_LOZENGE,
-   NEXTCHAR_yDIERESIS,
-   NEXTCHAR_YDIERESIS,
-   NEXTCHAR_FRACTION,
-   NEXTCHAR_CURRENCY,
-   NEXTCHAR_GUILSINGLLEFT,
-   NEXTCHAR_GUILSINGLRIGHT,
-   NEXTCHAR_FI,
-   NEXTCHAR_FL,
-   NEXTCHAR_DAGGERDBL,
-   NEXTCHAR_PERIODCENTERED,
-   NEXTCHAR_QUOTESINGLBASE,
-   NEXTCHAR_QUOTEDBLBASE,
-   NEXTCHAR_PERTHOUSAND,
-   NEXTCHAR_ACIRCUMFLEX,
-   NEXTCHAR_ECIRCUMFLEX,
-   NEXTCHAR_AACUTE,
-   NEXTCHAR_EDIERESIS,
-   NEXTCHAR_EGRAVE,
-   NEXTCHAR_IACUTE,
-   NEXTCHAR_ICIRCUMFLEX,
-   NEXTCHAR_IDIERESIS,
-   NEXTCHAR_IGRAVE,
-   NEXTCHAR_OACUTE,
-   NEXTCHAR_OCIRCUMFLEX,
-   NEXTCHAR_APPLE,
-   NEXTCHAR_OGRAVE,
-   NEXTCHAR_UACUTE,
-   NEXTCHAR_UCIRCUMFLEX,
-   NEXTCHAR_UGRAVE,
-   NEXTCHAR_DOTLESSI,
-   NEXTCHAR_CIRCUMFLEX,
-   NEXTCHAR_TILDE,
-   NEXTCHAR_MACRON,
-   NEXTCHAR_BREVE,
-   NEXTCHAR_DOTACCENT,
-   NEXTCHAR_RING,
-   NEXTCHAR_CEDILLA,
-   NEXTCHAR_HUNGARUMLAUT,
-   NEXTCHAR_OGONEK,
-   NEXTCHAR_CARON
-};
-
-static const unsigned char nexttomac[] = {
-   0,
-   1,
-   2,
-   3,
-   4,
-   5,
-   6,
-   7,
-   8,
-   9,
-   10,
-   11,
-   12,
-   13,
-   14,
-   15,
-   16,
-   17,
-   18,
-   19,
-   20,
-   21,
-   22,
-   23,
-   24,
-   25,
-   26,
-   27,
-   28,
-   29,
-   30,
-   31,
-   32,
-   33,
-   34,
-   35,
-   36,
-   37,
-   38,
-   39,				/* MACCHAR_QUOTERIGHT, */
-   40,
-   41,
-   42,
-   43,
-   44,
-   45,
-   46,
-   47,
-   48,
-   49,
-   50,
-   51,
-   52,
-   53,
-   54,
-   55,
-   56,
-   57,
-   58,
-   59,
-   60,
-   61,
-   62,
-   63,
-   64,
-   65,
-   66,
-   67,
-   68,
-   69,
-   70,
-   71,
-   72,
-   73,
-   74,
-   75,
-   76,
-   77,
-   78,
-   79,
-   80,
-   81,
-   82,
-   83,
-   84,
-   85,
-   86,
-   87,
-   88,
-   89,
-   90,
-   91,
-   92,
-   93,
-   94,
-   95,
-   96,				/* MACCHAR_QUOTELEFT, */
-   97,
-   98,
-   99,
-   100,
-   101,
-   102,
-   103,
-   104,
-   105,
-   106,
-   107,
-   108,
-   109,
-   110,
-   111,
-   112,
-   113,
-   114,
-   115,
-   116,
-   117,
-   118,
-   119,
-   120,
-   121,
-   122,
-   123,
-   124,
-   125,
-   126,
-   127,
-   MACCHAR_FIGSP,
-   MACCHAR_AGRAVE,
-   MACCHAR_AACUTE,
-   MACCHAR_ACIRCUMFLEX,
-   MACCHAR_ATILDE,
-   MACCHAR_ADIERESIS,
-   MACCHAR_ARING,
-   MACCHAR_CCEDILLA,
-   MACCHAR_EGRAVE,
-   MACCHAR_EACUTE,
-   MACCHAR_ECIRCUMFLEX,
-   MACCHAR_EDIERESIS,
-   MACCHAR_IGRAVE,
-   MACCHAR_IACUTE,
-   MACCHAR_ICIRCUMFLEX,
-   MACCHAR_IDIERESIS,
-   MACCHAR_ETH,
-   MACCHAR_NTILDE,
-   MACCHAR_OGRAVE,
-   MACCHAR_OACUTE,
-   MACCHAR_OCIRCUMFLEX,
-   MACCHAR_OTILDE,
-   MACCHAR_ODIERESIS,
-   MACCHAR_UGRAVE,
-   MACCHAR_UACUTE,
-   MACCHAR_UCIRCUMFLEX,
-   MACCHAR_UDIERESIS,
-   MACCHAR_YACUTE,
-   MACCHAR_THORN,
-   MACCHAR_MU,
-   MACCHAR_MULTIPLY,
-   MACCHAR_DIVIDE,
-   MACCHAR_COPYRIGHT,
-   MACCHAR_EXCLAMDOWN,
-   MACCHAR_CENT,
-   MACCHAR_STERLING,
-   MACCHAR_FRACTION,
-   MACCHAR_YEN,
-   MACCHAR_FLORIN,
-   MACCHAR_SECTION,
-   MACCHAR_CURRENCY,
-   MACCHAR_QUOTERIGHT,			/* MACCHAR_QUOTESINGLE, */
-   MACCHAR_QUOTEDBLLEFT,
-   MACCHAR_GUILLEMOTLEFT,
-   MACCHAR_GUILSINGLLEFT,
-   MACCHAR_GUILSINGLRIGHT,
-   MACCHAR_FI,
-   MACCHAR_FL,
-   MACCHAR_REGISTERED,
-   MACCHAR_ENDASH,
-   MACCHAR_DAGGER,
-   MACCHAR_DAGGERDBL,
-   MACCHAR_PERIODCENTERED,
-   MACCHAR_BROKENBAR,
-   MACCHAR_PARAGRAPH,
-   MACCHAR_BULLET,
-   MACCHAR_QUOTESINGLBASE,
-   MACCHAR_QUOTEDBLBASE,
-   MACCHAR_QUOTEDBLRIGHT,
-   MACCHAR_GUILLEMOTRIGHT,
-   MACCHAR_ELLIPSIS,
-   MACCHAR_PERTHOUSAND,
-   MACCHAR_LOGICALNOT,
-   MACCHAR_QUESTIONDOWN,
-   MACCHAR_ONESUPERIOR,
-   MACCHAR_QUOTELEFT,			/* MACCHAR_GRAVE, */
-   MACCHAR_ACUTE,
-   MACCHAR_CIRCUMFLEX,
-   MACCHAR_TILDE,
-   MACCHAR_MACRON,
-   MACCHAR_BREVE,
-   MACCHAR_DOTACCENT,
-   MACCHAR_DIERESIS,
-   MACCHAR_TWOSUPERIOR,
-   MACCHAR_RING,
-   MACCHAR_CEDILLA,
-   MACCHAR_THREESUPERIOR,
-   MACCHAR_HUNGARUMLAUT,
-   MACCHAR_OGONEK,
-   MACCHAR_CARON,
-   MACCHAR_EMDASH,
-   MACCHAR_PLUSMINUS,
-   MACCHAR_ONEQUARTER,
-   MACCHAR_ONEHALF,
-   MACCHAR_THREEQUARTERS,
-   MACCHAR_aGRAVE,
-   MACCHAR_aACUTE,
-   MACCHAR_aCIRCUMFLEX,
-   MACCHAR_aTILDE,
-   MACCHAR_aDIERESIS,
-   MACCHAR_aRING,
-   MACCHAR_cCEDILLA,
-   MACCHAR_eGRAVE,
-   MACCHAR_eACUTE,
-   MACCHAR_eCIRCUMFLEX,
-   MACCHAR_eDIERESIS,
-   MACCHAR_iGRAVE,
-   MACCHAR_AE,
-   MACCHAR_iACUTE,
-   MACCHAR_ORDFEMININE,
-   MACCHAR_iCIRCUMFLEX,
-   MACCHAR_iDIERESIS,
-   MACCHAR_eTH,
-   MACCHAR_nTILDE,
-   MACCHAR_LSLASH,
-   MACCHAR_OSLASH,
-   MACCHAR_OE,
-   MACCHAR_ORDMASCULINE,
-   MACCHAR_oGRAVE,
-   MACCHAR_oACUTE,
-   MACCHAR_oCIRCUMFLEX,
-   MACCHAR_oTILDE,
-   MACCHAR_oDIERESIS,
-   MACCHAR_ae,
-   MACCHAR_uGRAVE,
-   MACCHAR_uACUTE,
-   MACCHAR_uCIRCUMFLEX,
-   MACCHAR_DOTLESSI,
-   MACCHAR_uDIERESIS,
-   MACCHAR_yACUTE,
-   MACCHAR_lSLASH,
-   MACCHAR_oSLASH,
-   MACCHAR_oe,
-   MACCHAR_GERMANDBLS,
-   MACCHAR_tHORN,
-   MACCHAR_yDIERESIS,
-   MACCHAR_NEXT254,
-   MACCHAR_NEXT255
-};
-
 #define PREFIX	"\\endnhere"
 #define NCHARPREFIX	(sizeof(PREFIX)-1)
 
@@ -1435,6 +922,8 @@ void Executor::PutScrapX (Executor::OSType type, LONGINT length, char *p, int sc
    char doit;
    NSMutableArray *types;
    virtual_int_state_t block;
+   NSString *ourStr = nil;
+   //NSAttributedString *ourRichStr = nil;
    long fonttblextra;
    
    SETUPA5;
@@ -1453,7 +942,11 @@ void Executor::PutScrapX (Executor::OSType type, LONGINT length, char *p, int sc
             free (textdata);
          textdata = (char*)malloc (length);
          convertreturns (p, textdata, length, MacToUNIX);
-         convertchars (textdata, length, mactonext);
+	  {
+		 NSData *tmpData = [[NSData alloc] initWithBytesNoCopy:textdata length:length];
+		 ourStr = [[NSString alloc] initWithData:tmpData encoding:NSMacOSRomanStringEncoding];
+		 [tmpData release];
+	  }
          textlength = length;
          doit = YES;
          break;
@@ -1478,7 +971,6 @@ void Executor::PutScrapX (Executor::OSType type, LONGINT length, char *p, int sc
          
          rtfdata = (char*)malloc (length + fonttblextra);
          rtflength = convertreturns (p, rtfdata, length, MacRTFToUNIX);
-         convertchars (rtfdata, rtflength, mactonext);
          doit = YES;
          break;
       case TIFF:
@@ -1525,12 +1017,13 @@ void Executor::PutScrapX (Executor::OSType type, LONGINT length, char *p, int sc
       if (epscount == count)
          [ROMlib_pasteboard setData:[NSData dataWithBytesNoCopy:epsdata length:epslength] forType:NSPostScriptPboardType];
       if (textcount == count)
-         [ROMlib_pasteboard setData:[NSData dataWithBytesNoCopy:textdata length:textlength] forType:NSStringPboardType];
+         [ROMlib_pasteboard setString:ourStr forType:NSStringPboardType];
       if (tiffcount == count)
          [ROMlib_pasteboard setData:[NSData dataWithBytesNoCopy:tiffdata length:tifflength] forType:NSTIFFPboardType];
       if (pictcount == count)
          [ROMlib_pasteboard setData:[NSData dataWithBytesNoCopy:pictdata length:pictlength] forType:NSPICTPboardType];
    }
+   [ourStr release];
    ROMlib_ourchangecount =[ROMlib_pasteboard changeCount];
    restore_virtual_ints (block);
    RESTOREA5;
@@ -1579,7 +1072,7 @@ LONGINT Executor::GetScrapX (OSType type, char **h)
          if ([types indexOfObject:tofind] != NSNotFound
              && (data = [ROMlib_pasteboard dataForType:tofind]))
          {
-            if (tofind == NSRTFPboardType)
+            if ([tofind isEqualToString: NSRTFPboardType])
             {
                ReallocHandle ((Handle) h, [data length] * 2);
                if (MemErr != noErr)
@@ -1587,24 +1080,34 @@ LONGINT Executor::GetScrapX (OSType type, char **h)
                   retval = -1;
                   /*-->*/ goto DONE;
                }
-               retval = convertreturns ((const char*)[data bytes], MR (*h), [data length], UNIXRTFToMac);
-               convertchars (MR (*h), retval, nexttomac);
+			   NSString *cocoaStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+               retval = convertreturns ((const char*)[cocoaStr cStringUsingEncoding:NSMacOSRomanStringEncoding], MR (*h), [cocoaStr lengthOfBytesUsingEncoding:NSMacOSRomanStringEncoding], UNIXRTFToMac);
+			   [cocoaStr release];
                ReallocHandle ((Handle) h, retval);
                if (MemErr != noErr)
                   retval = -1;
                /*-->*/ goto DONE;
+			   
+			} else if ([tofind isEqualToString: NSStringPboardType]) {
+			   NSString *ourStr = [ROMlib_pasteboard stringForType:NSStringPboardType];
+			   NSData *ourData = [ourStr dataUsingEncoding:NSMacOSRomanStringEncoding];
+			   ReallocHandle ((Handle) h, [ourData length]);
+			   convertreturns ((const char*)[ourData bytes], MR (*h), [ourData length], UNIXToMac);
+			   retval = [ourData length];
             } else {
                ReallocHandle ((Handle) h, [data length]);
                if (MemErr != noErr) {
                   retval = -1;
                   /*-->*/ goto DONE;
                }
-               if (![tofind isEqualToString: NSTIFFPboardType] && ![tofind isEqualToString:NSPICTPboardType])
+			   if (![tofind isEqualToString: NSTIFFPboardType] && ![tofind isEqualToString:NSPICTPboardType]) {
                   convertreturns ((const char*)[data bytes], MR (*h), [data length], UNIXToMac);
-               else
+			   } else
                   memcpy (MR (*h), [data bytes], [data length]);
-               if ([tofind isEqualToString:NSStringPboardType])
-                  convertchars (MR (*h), [data length], nexttomac);
+			   if ([tofind isEqualToString:NSStringPboardType]) {
+				  //NSString *ourStr = [ROMlib_pasteboard stringForType:tofind];
+                  //convertchars (MR (*h), [data length], nexttomac);
+			   }
             }
             retval = [data length];
          }
@@ -1616,7 +1119,7 @@ LONGINT Executor::GetScrapX (OSType type, char **h)
    DONE:
       restore_virtual_ints (block);
       RESTOREA5;
-      return retval;
+      return CL(retval);
    }
 }
 
@@ -2063,7 +1566,7 @@ static struct
 }
 
 - (BOOL) writeSelectionToPasteboard:(NSPasteboard *) pboard
-						types:(NSArray<NSString*> *) types
+							  types:(NSArray<NSPasteboardType> *) types
 {
   id saveROMlib_pasteboard;
 

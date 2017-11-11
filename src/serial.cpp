@@ -262,7 +262,7 @@ A1(PRIVATE, DCtlPtr, otherdctl, ParmBlkPtr, pbp)
 PRIVATE char *specialname(ParmBlkPtr pbp, const char **lockfilep,
 						        const char **tempfilep)
 {
-    char *retval;
+    char *retval = NULL;
 
     switch (CW(pbp->cntrlParam.ioCRefNum)) {
         case AINREFNUM:
